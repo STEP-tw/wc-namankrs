@@ -1,6 +1,12 @@
 const assert = require("assert");
 const { mockReader, mockValidator } = require("./util");
-const { wc } = require("../src/fileUtil");
+const { countWords, wc } = require("../src/fileUtil");
+
+describe("countWords", function() {
+  it("should return 1 for a single word string", function() {
+    assert.deepEqual(countWords("naman"), 1);
+  });
+});
 
 describe("wc", function() {
   let file = "a/nb/nab/ncd";

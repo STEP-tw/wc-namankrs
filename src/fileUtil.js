@@ -21,4 +21,4 @@ const wc = function([filePath], fs) {
   return [lineCount, wordCount, characterCount, filePath].join(TAB);
 };
 
-module.exports = { wc };
+module.exports = { countWords, wc };
