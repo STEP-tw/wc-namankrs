@@ -13,12 +13,12 @@ const countWords = function(content) {
   return wordCount;
 };
 
-const wc = function([filePath], fs) {
+const getCounts = function(filePath, fs) {
   let content = fs.readFileSync(filePath, ENCODING);
   let characterCount = countCharacters(content);
   let wordCount = countWords(content);
   let lineCount = countLines(content) - 1;
-  return [lineCount, wordCount, characterCount, filePath].join(TAB);
+  return { lineCount, wordCount, characterCount, filePath };
 };
 
-module.exports = { countWords, wc };
+module.exports = { countWords, getCounts };

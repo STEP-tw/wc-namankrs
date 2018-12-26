@@ -1,9 +1,9 @@
 const fs = require("fs");
-const { wc } = require("./src/fileUtil");
+const { processOutput } = require("./src/processOutput");
 
 const main = function() {
   let inputArgs = process.argv.slice(2);
-  console.log(wc(inputArgs, fs));
+  console.log(processOutput(inputArgs, fs));
 };
 
 main();
