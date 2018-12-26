@@ -1,6 +1,10 @@
 const assert = require("assert");
 const { mockReader, mockValidator } = require("./util");
-const { countWords, getCounts, getAllCounts } = require("../src/fileUtil");
+const {
+  countWords,
+  getSingleFileCounts,
+  getAllCounts
+} = require("../src/fileUtil");
 
 describe("countWords", function() {
   it("should return 1 for a single word string", function() {
@@ -8,7 +12,7 @@ describe("countWords", function() {
   });
 });
 
-describe("getCounts", function() {
+describe("getSingleFileCounts", function() {
   let file = "a\nb\nab\ncd";
   let readFileSync = mockReader(file, "a\nb\nab\ncd");
   let existsSync = mockValidator(file);
@@ -20,7 +24,7 @@ describe("getCounts", function() {
       wordCount: 4,
       characterCount: 9
     };
-    assert.deepEqual(getCounts(file, fs), expectedOutput);
+    assert.deepEqual(getSingleFileCounts(file, fs), expectedOutput);
   });
 });
 
