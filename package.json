@@ -1,0 +1,27 @@
+{
+  "name": "wc-namankrs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wc.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "format": "prettier"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/STEP-tw/wc-namankrs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/STEP-tw/wc-namankrs/issues"
+  },
+  "homepage": "https://github.com/STEP-tw/wc-namankrs#readme",
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "prettify": "^0.1.7"
+  }
+}
