@@ -1,9 +1,9 @@
 const fs = require("fs");
-const { processOutput } = require("./src/processOutput");
+const { formatOutput } = require("./src/formatOutput");
 
 const main = function() {
   let inputArgs = process.argv.slice(2);
-  console.log(processOutput(inputArgs, fs));
+  console.log(formatOutput(inputArgs, fs));
 };
 
 main();
