@@ -6,11 +6,8 @@ const countCharacters = getCount.bind(null, "");
 const countLines = getCount.bind(null, "\n");
 
 const countWords = function(content) {
-  let wordCount = content
-    .split("\n")
-    .join(" ")
-    .split(" ")
-    .filter(x => x != "").length;
+  let words = content.trim();
+  let wordCount = words.split(/[ \n]+/).length;
   return wordCount;
 };
 
