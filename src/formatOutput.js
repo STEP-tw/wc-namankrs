@@ -8,7 +8,9 @@ const formatOutput = function(userArgs, fs) {
   let countsSum = zippedCounts.map(x => x.reduce((a, b) => a + b));
   countsSum.pop();
   countsSum.push("total");
-  allCounts.push(countsSum);
+  if (allCounts.length > 1) {
+    allCounts.push(countsSum);
+  }
   return allCounts.map(x => x.join(TAB)).join(NEWLINE);
 };
 
