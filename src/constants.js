@@ -1,5 +1,5 @@
-const NEW_LINE = "\n";
+const NEWLINE = "\n";
 const TAB = "\t";
 const ENCODING = "utf8";
 const HYPHEN = "-";
-module.exports = { NEW_LINE, TAB, ENCODING, HYPHEN };
+module.exports = { NEWLINE, TAB, ENCODING, HYPHEN };

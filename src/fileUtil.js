@@ -1,4 +1,4 @@
-const { NEW_LINE, TAB, ENCODING } = require("./constants");
+const { NEWLINE, TAB, ENCODING } = require("./constants");
 const { parseInputs } = require("./parser");
 
 const getCount = (delimeter, content) => {
@@ -6,7 +6,7 @@ const getCount = (delimeter, content) => {
 };
 
 const countCharacters = getCount.bind(null, "");
-const countLines = getCount.bind(null, NEW_LINE);
+const countLines = getCount.bind(null, NEWLINE);
 
 const countWords = function(content) {
   let words = content.trim();
@@ -49,4 +49,5 @@ const getAllCounts = function(userArgs, fs) {
   const getSingleFileDetails = getFileDetails.bind(null, fs, options);
   return files.reduce(getSingleFileDetails, []);
 };
+
 module.exports = { countWords, getSingleFileCounts, getAllCounts };
