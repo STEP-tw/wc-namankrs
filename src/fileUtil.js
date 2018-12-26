@@ -1,7 +1,7 @@
 const { NEW_LINE, TAB, ENCODING } = require("./constants");
 const { parseInputs } = require("./parser");
 
-const getCount = function(delimeter, content) {
+const getCount = (delimeter, content) => {
   return content.split(delimeter).length;
 };
 
