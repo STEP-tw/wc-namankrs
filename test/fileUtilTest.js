@@ -1,5 +1,5 @@
 const assert = require("assert");
-const { mockReader, mockValidator } = require("./util");
+const { mockReader, mockValidator } = require("./testUtil");
 const {
   countWords,
   getSingleFileCounts,
