@@ -8,11 +8,7 @@ const getCount = (delimeter, content) => {
 const countCharacters = getCount.bind(null, "");
 const countLines = getCount.bind(null, NEWLINE);
 
-const countWords = function(content) {
-  let words = content.trim();
-  let wordCount = words.split(/[ \n]+/).filter(x => x).length;
-  return wordCount;
-};
+const countWords = content => content.split(/[ \n]+/).filter(x => x).length;
 
 const getSingleFileCounts = function(filePath, fs) {
   let content = fs.readFileSync(filePath, ENCODING);

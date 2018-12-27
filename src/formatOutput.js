@@ -2,14 +2,17 @@ let { getAllCounts } = require("./fileUtil");
 const lodash = require("lodash");
 const { TAB, NEWLINE } = require("./constants");
 
-const formatOutput = function(userArgs, fs) {
-  let allCounts = getAllCounts(userArgs, fs);
-  let zippedCounts = lodash.zip.apply(null, allCounts);
+const sumCounts = function(counts) {
+  let zippedCounts = lodash.zip.apply(null, counts);
   let countsSum = zippedCounts.map(x => x.reduce((a, b) => a + b));
   countsSum.pop();
-  countsSum.push("total");
+  return countsSum.concat("total");
+};
+
+const formatOutput = function(userArgs, fs) {
+  let allCounts = getAllCounts(userArgs, fs);
   if (allCounts.length > 1) {
-    allCounts.push(countsSum);
+    allCounts.push(sumCounts(allCounts));
   }
   return allCounts.map(x => x.join(TAB)).join(NEWLINE);
 };
