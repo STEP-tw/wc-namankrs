@@ -1,5 +1,6 @@
 const assert = require("assert");
 const { mockReader, mockValidator } = require("./testUtil");
+
 const {
   countWords,
   getSingleFileCounts,
@@ -34,27 +35,27 @@ describe("getAllCounts", function() {
   let existsSync = mockValidator(file);
   const fs = { readFileSync, existsSync };
   it("should return details with default options when only a single file is given", function() {
-    let args = [file];
+    let args = { options: ["l", "c", "w"], files: [file] };
     let expectedOutput = [[3, 4, 9, "a\nb\nab\ncd"]];
     assert.deepEqual(getAllCounts(args, fs), expectedOutput);
   });
   it("should return details option when -l is given with single file", function() {
-    let args = ["-l", file];
+    let args = { options: ["l"], files: [file] };
     let expectedOutput = [[3, "a\nb\nab\ncd"]];
     assert.deepEqual(getAllCounts(args, fs), expectedOutput);
   });
   it("should return details option when -c is given with single file", function() {
-    let args = ["-c", file];
+    let args = { options: ["c"], files: [file] };
     let expectedOutput = [[9, "a\nb\nab\ncd"]];
     assert.deepEqual(getAllCounts(args, fs), expectedOutput);
   });
   it("should return details when -w is given with single file", function() {
-    let args = ["-w", file];
+    let args = { options: ["w"], files: [file] };
     let expectedOutput = [[4, "a\nb\nab\ncd"]];
     assert.deepEqual(getAllCounts(args, fs), expectedOutput);
   });
   it("should return details of files in a two dimensional array for more than one file", function() {
-    let args = [file, file];
+    let args = { options: ["l", "w", "c"], files: [file, file] };
     let expectedOutput = [[3, 4, 9, "a\nb\nab\ncd"], [3, 4, 9, "a\nb\nab\ncd"]];
     assert.deepEqual(getAllCounts(args, fs), expectedOutput);
   });

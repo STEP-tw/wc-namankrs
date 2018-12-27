@@ -40,8 +40,7 @@ const getFileDetails = function(fs, options, acc, filePath) {
   return acc;
 };
 
-const getAllCounts = function(userArgs, fs) {
-  const { options, files } = parseInputs(userArgs);
+const getAllCounts = function({ options, files }, fs) {
   const getSingleFileDetails = getFileDetails.bind(null, fs, options);
   return files.reduce(getSingleFileDetails, []);
 };

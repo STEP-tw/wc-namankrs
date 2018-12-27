@@ -43,4 +43,11 @@ describe("parseInputs", function() {
     };
     assert.deepEqual(parseInputs(args), expectedOutput);
   });
+  it("should return an error message when option is other than w,c or l", function() {
+    let args = ["-v", "file"];
+    let expectedOutput = {
+      error: "wc: illegal option -- v\nusage: wc [-clmw] [file ...]"
+    };
+    assert.deepEqual(parseInputs(args), expectedOutput);
+  });
 });
