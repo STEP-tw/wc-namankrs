@@ -1,11 +1,11 @@
-const { HYPHEN } = require("./constants");
+const { HYPHEN, EMPTYSTRING } = require("./constants");
 
 const parseInputs = function(userArgs) {
   let args = userArgs.slice();
   let options = [];
 
   while (args[0].startsWith(HYPHEN)) {
-    options = options.concat(args[0].slice(1).split(""));
+    options = options.concat(args[0].slice(1).split(EMPTYSTRING));
     args.shift();
   }
   let files = args;
