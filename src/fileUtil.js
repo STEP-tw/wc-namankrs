@@ -1,14 +1,5 @@
-const { NEWLINE, TAB, ENCODING } = require("./constants");
-const { parseInputs } = require("./parser");
-
-const getCount = (delimeter, content) => {
-  return content.split(delimeter).length;
-};
-
-const countCharacters = getCount.bind(null, "");
-const countLines = getCount.bind(null, NEWLINE);
-
-const countWords = content => content.split(/[ \n]+/).filter(x => x).length;
+const { ENCODING } = require("./constants");
+const { countLines, countWords, countCharacters } = require("./util");
 
 const getSingleFileCounts = function(filePath, fs) {
   let content = fs.readFileSync(filePath, ENCODING);

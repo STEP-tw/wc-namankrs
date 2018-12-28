@@ -22,4 +22,4 @@ const formatOutput = function(userArgs, fs) {
   return allCounts.map(x => x.join(TAB)).join(NEWLINE);
 };
 
-module.exports = { formatOutput };
+module.exports = { sumCounts, formatOutput };
