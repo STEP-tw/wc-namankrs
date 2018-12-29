@@ -1,7 +1,6 @@
 done: single file without option
 done: remove last line
 done: has to review count words
-handle option error
+done: handle option error
 handle file error 
-write app level test
 parser line 2
