@@ -16,9 +16,8 @@ const parseInputs = function(userArgs) {
   let files = args;
 
   let wrongOptions = options.filter(isNotOption);
-  if (wrongOptions.length) {
-    return { error: getOptionError(wrongOptions[0]) };
-  }
+
+  if (wrongOptions.length) return { error: getOptionError(wrongOptions[0]) };
 
   if (!options.length) options = ["l", "w", "c"];
 
