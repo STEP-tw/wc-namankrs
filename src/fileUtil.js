@@ -1,5 +1,7 @@
-const { ENCODING } = require("./constants");
+const { ENCODING, TAB, NEWLINE } = require("./constants");
 const { countLines, countWords, countCharacters } = require("./util");
+const { parseInputs } = require("./parser");
+const { sumCounts } = require("./formatOutput");
 
 const getSingleFileCounts = function(filePath, fs) {
   let content = fs.readFileSync(filePath, ENCODING);
@@ -36,4 +38,16 @@ const getAllCounts = function({ options, files }, fs) {
   return files.reduce(getSingleFileDetails, []);
 };
 
-module.exports = { countWords, getSingleFileCounts, getAllCounts };
+const wc = function(userArgs, fs) {
+  const parsedInputs = parseInputs(userArgs);
+
+  if ("error" in parsedInputs) return parsedInputs.error;
+
+  let allCounts = getAllCounts(parsedInputs, fs);
+  if (allCounts.length > 1) {
+    allCounts.push(sumCounts(allCounts));
+  }
+  return allCounts.map(x => x.join(TAB)).join(NEWLINE);
+};
+
+module.exports = { countWords, getSingleFileCounts, getAllCounts, wc };
