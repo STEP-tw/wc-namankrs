@@ -13,8 +13,7 @@ describe("sumCounts", function() {
 describe("formatOutput ", function() {
   let file = "a\nb\nab\ncd";
   let readFileSync = mockReader(file, "a\nb\nab\ncd");
-  let existsSync = mockValidator(file);
-  const fs = { readFileSync, existsSync };
+  const fs = { readFileSync };
   it("should return the final output after formatting for a single file and  valid count", function() {
     const args = ["-c", file];
     const expectedOutput = "9\ta\nb\nab\ncd";

@@ -16,8 +16,7 @@ describe("countWords", function() {
 describe("getSingleFileCounts", function() {
   let file = "a\nb\nab\ncd";
   let readFileSync = mockReader(file, "a\nb\nab\ncd");
-  let existsSync = mockValidator(file);
-  const fs = { readFileSync, existsSync };
+  const fs = { readFileSync };
 
   it("should return the count of lines,word and characters when given a single file with no option", function() {
     const expectedOutput = {
@@ -32,8 +31,7 @@ describe("getSingleFileCounts", function() {
 describe("getAllCounts", function() {
   let file = "a\nb\nab\ncd";
   let readFileSync = mockReader(file, "a\nb\nab\ncd");
-  let existsSync = mockValidator(file);
-  const fs = { readFileSync, existsSync };
+  const fs = { readFileSync };
   it("should return details with default options when only a single file is given", function() {
     let args = { options: ["l", "c", "w"], files: [file] };
     let expectedOutput = [[3, 4, 9, "a\nb\nab\ncd"]];
