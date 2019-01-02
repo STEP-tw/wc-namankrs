@@ -1,10 +1,11 @@
 const assert = require("assert");
-const { mockReader, mockValidator } = require("./testUtil");
+const { mockReader } = require("./testUtil");
 
 const {
   countWords,
   getSingleFileCounts,
-  getAllCounts
+  getAllCounts,
+  wc
 } = require("../src/fileUtil");
 
 describe("countWords", function() {
@@ -56,5 +57,27 @@ describe("getAllCounts", function() {
     let args = { options: ["l", "w", "c"], files: [file, file] };
     let expectedOutput = [[3, 4, 9, "a\nb\nab\ncd"], [3, 4, 9, "a\nb\nab\ncd"]];
     assert.deepEqual(getAllCounts(args, fs), expectedOutput);
+  });
+});
+
+describe("wc ", function() {
+  let file = "a\nb\nab\ncd";
+  let readFileSync = mockReader(file, "a\nb\nab\ncd");
+  const fs = { readFileSync };
+  it("should return the final output after formatting for a single file and  valid count", function() {
+    const args = ["-c", file];
+    const expectedOutput = "9\ta\nb\nab\ncd";
+    assert.deepEqual(wc(args, fs), expectedOutput);
+  });
+  it("should return the final output after formatting for 2 files", function() {
+    const args = ["-l", file, file];
+    const expectedOutput = "3\ta\nb\nab\ncd\n3\ta\nb\nab\ncd\n6\ttotal";
+    assert.deepEqual(wc(args, fs), expectedOutput);
+  });
+  it("should return an error for a invalid option", function() {
+    const args = ["-b", file];
+    const expectedOutput =
+      "wc: illegal option -- b\nusage: wc [-clmw] [file ...]";
+    assert.deepEqual(wc(args, fs), expectedOutput);
   });
 });
